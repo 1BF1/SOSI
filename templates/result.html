@@ -1,83 +1,50 @@
 <html>
   <head>
     <title>Sosi Test</title>
-    <style>
-        body {
-        background-attachment: fixed;
-        margin: 0;
-      }
-        #topnav {
-            width: 100%;
-
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            background-color: Black;
-
-            font-family: Arial, sans-serif;
-            font-size: 15px;
-        }
-      body {
-        background-color: white;
-        }
-      table {
-        background-color: whitesmoke;
-        margin: 0 auto;
-        border-collapse: collapse;
-        width: 50%;
-        text-align: center;
-        }
-      th, td {
-        border: 1px solid black;
-        padding: 10px;
-        text-align: center;
-        }
-        tr:hover {
-        background-color: lightblue;
-      }
-      th {
-      background-color: lightgray;
-      }
-      th {
-      font-size: larger;
-      font-weight: bold;
-      }
-      td {
-      border: 1px solid lightgray;
-      }
-      table {
-      font-family: 'Open Sans', sans-serif;
-      }
-      td {
-      padding: 20px;
-      }
-      h2, p {
-        text-align: center;
-      }
-      h3 {
-        text-align: center;
-      }
-    </style>
   </head>
-    <body>
-        <div>
-        {{ file_contents|safe }}
-        </div>
+  <style>
+    html{
+        font-family: SF Pro;
+      }
+    body {
+      background-image: url("static/index.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
-    <script>
-      VANTA.TOPOLOGY({
-        el: "body",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00
-      })
-      </script>
-    </body>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+
+      width: 50%;
+      margin: 0 auto;
+      table-layout: fixed;
+    }
+
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      word-wrap: break-word;
+    }
+
+    #customers tr:nth-child(even){background-color: white;}
+    #customers tr:nth-child(odd){background-color: white;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+  </style>
+  <body>
+    <div id="customers">
+      {{ file_contents|safe }}
+    </div>
+  </body>
 </html>

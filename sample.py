@@ -78,7 +78,7 @@ def check_sosi(file_content, filename):
         if 'KOORDSYS' in value:
             koord = value
 
-    html = df.to_html()
+    html = df.to_html(index=False)
     alfa1 = True
     test_bool = True
     erro_kode = ""
@@ -101,9 +101,9 @@ def check_sosi(file_content, filename):
     if len(koord.split(" ")) == 1:
         erro_kode = erro_kode + "(Mangler KOORDSYS) "
         test_bool = False
-    dict_feil_tema = {'Linje': [], 'Feil beskrivelse': [],'Riktig beskrivelse': []}
+    dict_feil_tema = {'Linje': [], 'Feil beskrivelse': [],'Korrekt beskrivelse': []}
     if alfa1:
-        dict_feil_tema = {'Linje': [], 'Feil beskrivelse': [],'Riktig beskrivelse': []}
+        dict_feil_tema = {'Linje': [], 'Feil beskrivelse': [],'Korrekt beskrivelse': []}
         input_beskrivelse = dict_kontroll['KATEGORI/BESKRIVELSE']
         input_tema = dict_kontroll['PTEMA/LTEMA']
         dict_ptma_master = {'PTEMA/LTEMA': ['801','802','803','807','808','810','814','820','859','860','804','812','850','851','852','874','877','878'],'KATEGORI/BESKRIVELSE': ['Fiber rør i rør','Fiber rør i gassrør','Fiber i rør','Fiber reserverør','Fiber lokalnett','Fiber stikkledning i rør','Fiber uten rør','Fiber microtrench','Fiber omriss nodehytte','Fiber omriss kum','Fiber skjøt','Fiber ende rør','Fiber kum','Fiber stolpe','Fiber stolpe med kveileramme','Fiber kundepunkt','Fiber skap','Fiber kveil rør']}
@@ -111,13 +111,13 @@ def check_sosi(file_content, filename):
             if input_tema[i].strip() in dict_ptma_master['PTEMA/LTEMA']:
                 index_master = dict_ptma_master['PTEMA/LTEMA'].index(input_tema[i].strip())
                 if not input_beskrivelse[i].strip() == dict_ptma_master['KATEGORI/BESKRIVELSE'][index_master]:
-                    dict_feil_tema['Linje'].append(str(i))
+                    dict_feil_tema['Linje'].append(str(int(i) + 1))
                     dict_feil_tema['Feil beskrivelse'].append(input_beskrivelse[i])
-                    dict_feil_tema['Riktig beskrivelse'].append(dict_ptma_master['KATEGORI/BESKRIVELSE'][index_master])
+                    dict_feil_tema['Korrekt beskrivelse'].append(dict_ptma_master['KATEGORI/BESKRIVELSE'][index_master])
             else:
                 dict_feil_tema['Linje'].append(str(i))
                 dict_feil_tema['Feil beskrivelse'].append(['PTEMA/LTEMA finnes ikke (SOSI Spesifikasjon)'])
-                dict_feil_tema['Riktig beskrivelse'].append(['PTEMA/LTEMA finnes ikke (SOSI Spesifikasjon)'])
+                dict_feil_tema['Korrekt beskrivelse'].append(['PTEMA/LTEMA finnes ikke (SOSI Spesifikasjon)'])
                     
 
     if dict_feil_tema['Linje']:
@@ -151,7 +151,7 @@ def run_sosi_test():
 
     if file and file.filename.endswith('.sos'): 
         ex_dict = {'Navn': ['KURVE 1', 'KURVE 2','PUNKT 3', 'PUNKT 4'], 'PTEMA/LTEMA': ['810','803','877', '850'], 'OBJTYPE': ['Trase','Trase','Trasepunkt', 'Trasepunkt'], 'BESKRIVELSE': ['Fiber i luft','Fiber i rør','<skap nr> f.eks: H2234', '<kum nr> f.eks:K2342'], 'INFO': ['1x40mm 2x20mm','1x40mm 2x20mm','<Type skap>', 'KUM']}
-        send_html = '<br><br><br><br>' + pd.DataFrame.from_dict({'Ønsket resultat:': [], 'KOORDSYS 22': []}).to_html(index=False) + pd.DataFrame.from_dict(ex_dict).to_html() + '<br><br>' + html 
+        send_html = '<br><br><br><br>' + pd.DataFrame.from_dict({'Ønsket resultat:': [], 'KOORDSYS 22': []}).to_html(index=False) + pd.DataFrame.from_dict(ex_dict).to_html(index=False) + '<br><br>' + html 
         return render_template('result.html', file_contents=send_html)
     else: 
         return render_template('feil.html')
