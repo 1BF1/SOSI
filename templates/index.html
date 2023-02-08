@@ -1,17 +1,19 @@
 <html>
   <head>
+    <div class="topnav">
+      <a href="static\SOSI_Spesifikasjon.pdf">SOSI Spesifikasjon</a>
+      <div>
     <title>Sosi Test</title>
     <style>
+      html{
+        font-family: SF Pro;
+      }
       body {
-        background-image: url("static/index.jpg");
-        background-color: whitesmoke; /* Used if the image is unavailable */
         height: 100vh; /* You must set a specified height */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
-        background-size: cover; /* Resize the background image to cover the entire container*/
         display: flex;
         align-items: center;
         justify-content: center;
+        margin: 0;
       }
       
       form {
@@ -41,41 +43,50 @@
         cursor: pointer;
       }
 
-      #topnav {
-            width: 100%;
+      .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
 
-            position: fixed;
-            top: 0;
-            left: 0;
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
 
-            background-color: Black;
-
-            font-family: Arial, sans-serif;
-            font-size: 15px;
-      }
-      .nav-link {
-        display: inline-block;
-        width: 100px;
-        height: 55px;
-
-        color: White;
-
-        /* centering text */
-        text-align: center;    /* horizontally */
-        line-height: 55px;     /* vertically */
-        
-        text-decoration: none;
-      }
+    .topnav a:hover {
+      background-color: #04AA6D;
+      color: black;
+    }
     </style>
   </head>
-  <nav id="topnav">
-    <a class="nav-link" href="{{ url_for('index') }}">Hovedmeny</a>
-    <a class="nav-link" href="static\SOSI_Spesifikasjon.pdf">SOSI_Spesifikasjon</a>
-  </nav>
+ 
   <body>
+    <div>
     <form action="/run_sosi_test" method="post" enctype="multipart/form-data">
       <input type="file" name="file" multiple />
       <input type="submit" value="SOSI TEST" />
     </form>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.topology.min.js"></script>
+    <script>
+      VANTA.TOPOLOGY({
+        el: "body",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00
+      })
+      </script>
   </body>
 </html>
