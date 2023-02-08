@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <title>Sosi Test</title>
+    <style>
+      body {
+        background-image: url("static/index.jpg");
+        background-color: whitesmoke; /* Used if the image is unavailable */
+        height: 100vh; /* You must set a specified height */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container*/
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      form {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #333;
+      }
+      
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+      }
+      
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #topnav {
+            width: 100%;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            background-color: Black;
+
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+      }
+      .nav-link {
+        display: inline-block;
+        width: 100px;
+        height: 55px;
+
+        color: White;
+
+        /* centering text */
+        text-align: center;    /* horizontally */
+        line-height: 55px;     /* vertically */
+        
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <nav id="topnav">
+    <a class="nav-link" href="{{ url_for('index') }}">Hovedmeny</a>
+    <a class="nav-link" href="static\SOSI_Spesifikasjon.pdf">SOSI_Spesifikasjon</a>
+  </nav>
+  <body>
+    <form action="/run_sosi_test" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" multiple />
+      <input type="submit" value="SOSI TEST" />
+    </form>
+  </body>
+</html>

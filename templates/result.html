@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <title>Sosi Test</title>
+    <style>
+        body {
+        background-image: url("static/index.jpg");
+        background-color: whitesmoke; /* Used if the image is unavailable */
+        height: 100vh; /* You must set a specified height */
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container*/
+        background-attachment: fixed;
+      }
+        #topnav {
+            width: 100%;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            background-color: Black;
+
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+        }
+      body {
+        background-color: white;
+        }
+      table {
+        background-color: whitesmoke;
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 50%;
+        text-align: center;
+        }
+      th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+        }
+      h2, p {
+        text-align: center;
+      }
+      h3 {
+        text-align: center;
+      }
+      .nav-link {
+        display: inline-block;
+        width: 100px;
+        height: 55px;
+
+        color: White;
+
+        /* centering text */
+        text-align: center;    /* horizontally */
+        line-height: 55px;     /* vertically */
+        
+        text-decoration: none;
+    }
+    </style>
+  </head>
+    <nav id="topnav">
+        <a class="nav-link" href="{{ url_for('index') }}">Hovedmeny</a>
+        <a class="nav-link" href="static\SOSI_Spesifikasjon.pdf">SOSI_Spesifikasjon</a>
+        
+    </nav>
+    <body>
+        <div>
+        {{ file_contents|safe }}
+        </div>
+    </body>
+</html>
