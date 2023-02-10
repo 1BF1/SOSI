@@ -49,7 +49,7 @@ def check_sosi(file_content, filename):
                             kat = kat + str(pkat[1:]).strip().replace(",", "").replace("[", "").replace("]", "").replace("'", "").replace('"', "") + " "
                         else:
                             kat = kat + 'None '
-                    if 'INFO' in value:
+                    if 'INFO' in value 'STRENG':
                         pfid = value.split(" ")
                         if len(pfid) > 0:
                             fid = fid + str(pfid[1:]).strip().replace(",", "").replace("[", "").replace("]", "").replace("'", "").replace('"', "") + " "
