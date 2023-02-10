@@ -45,13 +45,13 @@ def check_sosi(file_content, filename):
                             obj = obj + 'None '
                     if 'KATEGORI' in value or 'BESKRIVELSE' in value:
                         pkat = value.split(" ")
-                        if len(pobj) > 0:
+                        if len(pkat) > 0:
                             kat = kat + str(pkat[1:]).strip().replace(",", "").replace("[", "").replace("]", "").replace("'", "").replace('"', "") + " "
                         else:
                             kat = kat + 'None '
                     if 'INFO' in value:
                         pfid = value.split(" ")
-                        if len(pobj) > 0:
+                        if len(pfid) > 0:
                             fid = fid + str(pfid[1:]).strip().replace(",", "").replace("[", "").replace("]", "").replace("'", "").replace('"', "") + " "
                         else:
                             fid = fid + 'None '
