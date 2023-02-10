@@ -43,7 +43,7 @@ def check_sosi(file_content, filename):
                             obj = obj + pobj[1] + " "
                         else:
                             obj = obj + 'None '
-                    if 'KATEGORI' in value or 'BESKRIVELSE' in value:
+                    if 'KATEGORI' in value or 'BESKRIVELSE' in value or 'TEMATEKST' in value:
                         pkat = value.split(" ")
                         if len(pkat) > 0:
                             kat = kat + str(pkat[1:]).strip().replace(",", "").replace("[", "").replace("]", "").replace("'", "").replace('"', "") + " "
